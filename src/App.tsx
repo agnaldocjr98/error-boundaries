@@ -1,25 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Stack } from "@mui/material";
+import { User } from "./components/user";
+import { Gases } from "./components/gases";
+import { data } from "./data";
+import { ErrorBoundary } from "./error-boundary";
 
 function App() {
+  const obj = {};
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Stack spacing={2} sx={{ padding: (theme) => theme.spacing(2) }}>
+      <User />
+      <ErrorBoundary>
+        <Gases gases={data} />
+      </ErrorBoundary>
+    </Stack>
   );
 }
 
